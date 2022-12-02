@@ -4,7 +4,7 @@ Author: Wei Jiangning
 version: 
 Date: 2022-11-21 11:13:26
 LastEditors: Wei Jiangning
-LastEditTime: 2022-11-29 16:56:49
+LastEditTime: 2022-12-02 11:55:49
 '''
 import cv2
 import mediapipe as mp
@@ -71,7 +71,7 @@ class Api():
     with mp_pose.Pose(
         min_detection_confidence=0.5,
         min_tracking_confidence=0.5,
-        model_complexity=2) as pose:
+        model_complexity=1) as pose:
       with tqdm(total=frame_num) as pbar:
         t1 = time.time()
         while cap.isOpened():
@@ -84,7 +84,7 @@ class Api():
             break
             # If loading a video, use 'break' instead of 'continue'.
             continue
-          image = image[0:1080,0:960]
+          # image = image[0:1080,0:960]
           # To improve performance, optionally mark the image as not writeable to
           # pass by reference.
           image.flags.writeable = False

@@ -4,7 +4,7 @@ Author: Wei Jiangning
 version: 
 Date: 2022-11-21 11:46:52
 LastEditors: Wei Jiangning
-LastEditTime: 2022-11-29 15:51:41
+LastEditTime: 2023-01-03 18:49:22
 '''
 import cv2
 import sys
@@ -26,13 +26,16 @@ def video2frames(video_path):
         # print(u'add frame：%.4f GB' % (psutil.Process(os.getpid()).memory_info().rss / 1024 / 1024 / 1024))
     return frame_list
 
-def frames2Video(frame_list, width, height):
+def frames2Video(frame_list):
+    width = len(frame_list[0][0])
+    height = len(frame_list[0])
+    print(width, height)
     skip_frame_cnt = 1 # 原始帧率和默认帧率相同
     out_dir = "./test"
     video_name = "test-mediapipe-getKeyPoints"
     outcap = cv2.VideoWriter(
-        '{}/{}.avi'.format(out_dir, video_name),
-        cv2.VideoWriter_fourcc('M', 'J', 'P', 'G'), 30, (width, height))
+        '{}/{}.mp4'.format(out_dir, video_name),
+        cv2.VideoWriter_fourcc('M', 'P', '4', 'V'), 30, (width, height))
     for img in frame_list:
         outcap.write(img)
     outcap.release()

@@ -4,7 +4,7 @@ Author: Wei Jiangning
 version: 
 Date: 2022-11-21 11:13:26
 LastEditors: Wei Jiangning
-LastEditTime: 2022-12-02 11:55:49
+LastEditTime: 2023-01-03 18:48:46
 '''
 import cv2
 import mediapipe as mp
@@ -103,7 +103,7 @@ class Api():
               landmark_drawing_spec=mp_drawing_styles.get_default_pose_landmarks_style())
           # Flip the image horizontally for a selfie-view display.
           # cv2.imshow('MediaPipe Pose', cv2.flip(image, 1))
-          # out_put_frames.append(image)
+          out_put_frames.append(image)
           # vout.write(image)
           if cv2.waitKey(5) & 0xFF == 27:
             break
